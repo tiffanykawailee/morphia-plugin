@@ -5,7 +5,7 @@
 
   <!-- Public plugin name should be written in Title Case.
        Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
-  <name>Morphia-deprecation-plugin</name>
+  <name>Morphia Deprecation</name>
 
   <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
   <vendor email="support@yourcompany.com" url="https://www.yourcompany.com">YourCompany</vendor>
@@ -14,8 +14,7 @@
        Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
        Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
   <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
+    This plugin helps with Morphia deprecation in the MMS repo.
   ]]></description>
 
   <!-- Product and plugin compatibility requirements.
@@ -27,4 +26,14 @@
   <extensions defaultExtensionNs="com.intellij">
 
   </extensions>
+
+  <actions>
+    <action
+      id="StackOverflow.Search.Console"
+      class="com.mongo.morphiadeprecationplugin.action.RefactorDaoAction"
+      text="Refactor the Dao"
+      description="Dao refactor">
+      <add-to-group group-id="RefactoringMenu" anchor="last"/>
+    </action>
+  </actions>
 </idea-plugin>
