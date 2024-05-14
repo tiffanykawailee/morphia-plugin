@@ -7,6 +7,7 @@ import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiJavaFile;
 import org.jetbrains.annotations.NotNull;
@@ -25,8 +26,13 @@ public class RefactorDaoAction extends AnAction {
     if (editor == null || psiFile == null) {
       return;
     }
+    String modelName = Messages.showInputDialog(
+        "Provide package name for model that Dao uses (e.g. com.xgen.cloud.user._public.model.AppUser)",
+        "Help me please",
+        Messages.getQuestionIcon());
     RefactorDaoSvc service = ApplicationManager.getApplication().getService(RefactorDaoSvc.class);
-    service.refactorImports(e.getProject(), psiFile);
+    service.removeMorphiaImports(e.getProject(), psiFile);
+    service.extendNewBaseDao(e.getProject(), psiFile, modelName);
   }
 
   @Override

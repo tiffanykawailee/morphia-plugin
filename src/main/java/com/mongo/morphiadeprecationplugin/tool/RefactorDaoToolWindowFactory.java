@@ -13,8 +13,7 @@ public class RefactorDaoToolWindowFactory implements ToolWindowFactory {
 
   @Override
   public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
-    ConsoleView consoleView = TextConsoleBuilderFactory.getInstance().createBuilder(project).getConsole();
-    Content content = toolWindow.getContentManager().getFactory().createContent(consoleView.getComponent(), "Dao Refactor Progress", false);
-    toolWindow.getContentManager().addContent(content);
+    JPanel myPanel = new JPanel();
+    toolWindow.getComponent().add(myPanel);
   }
 }
